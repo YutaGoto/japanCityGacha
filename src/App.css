@@ -18,6 +18,10 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.buttons > .button:first-of-type {
+  margin-right: 1em;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -39,4 +43,10 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.github {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
