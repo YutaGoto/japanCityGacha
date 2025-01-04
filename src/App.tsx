@@ -3,11 +3,10 @@ import {
   Button,
   ButtonLink,
   ColorSchemeProvider,
+  ComboBox,
   Flex,
   Heading,
   IconButton,
-  IconButtonLink,
-  SelectList,
   Text,
   TextField,
 } from "gestalt";
@@ -27,6 +26,11 @@ function App() {
   const [pickedPrefecture, setPickedPrefecture] = useState<Prefecture>(
     prefectures[0]
   );
+
+  const optionPrefectures = prefectures.map((prefecture) => ({
+    value: prefecture.pref_code,
+    label: prefecture.pref_name,
+  }));
 
   const selectPrefecture = (prefectureCode: string) => {
     const prefecture = prefectures.find(
@@ -100,20 +104,13 @@ function App() {
             <Box>
               <Heading accessibilityLevel={1}>市区町村ルーレット</Heading>
               <Flex alignItems="end" gap={4}>
-                <SelectList
+                <ComboBox
                   label="都道府県"
                   id="prefecture"
-                  value={pickedPrefecture.pref_code}
-                  onChange={(e) => selectPrefecture(e.value)}
-                >
-                  {prefectures.map((prefecture) => (
-                    <SelectList.Option
-                      key={prefecture.pref_code}
-                      value={prefecture.pref_code}
-                      label={prefecture.pref_name}
-                    />
-                  ))}
-                </SelectList>
+                  placeholder="都道府県を選択"
+                  onSelect={(e) => selectPrefecture(e.item.value)}
+                  options={optionPrefectures}
+                />
                 <Button
                   text="市町村ルーレット"
                   onClick={pickCity}
