@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  ButtonLink,
   ColorSchemeProvider,
   Flex,
   Heading,
@@ -15,19 +16,7 @@ import { cities } from "./cities";
 import { prefectures } from "./prefectures";
 import { useState } from "react";
 import { ColorScheme } from "gestalt/dist/contexts/ColorSchemeProvider";
-
-interface City {
-  type: string;
-  code: string;
-  name: string;
-  kana: string;
-  city_code: string;
-  city_name: string;
-  city_kana: string;
-  pref_code: string;
-  pref_name: string;
-  pref_kana: string;
-}
+import type { City, Prefecture } from "./types";
 
 function App() {
   const [scheme, setScheme] = useState<ColorScheme>("userPreference");
@@ -35,10 +24,9 @@ function App() {
   const [pickedCity, setPickedCity] = useState<City | undefined>(undefined);
   const [pickedCities, setPickedCities] = useState<City[]>([]);
 
-  const [pickedPrefecture, setPickedPrefecture] = useState({
-    pref_name: "北海道",
-    pref_code: "010006",
-  });
+  const [pickedPrefecture, setPickedPrefecture] = useState<Prefecture>(
+    prefectures[0]
+  );
 
   const selectPrefecture = (prefectureCode: string) => {
     const prefecture = prefectures.find(
@@ -55,7 +43,19 @@ function App() {
     const prefectureCity = cities.filter((city) => {
       return city.pref_code === pickedPrefecture.pref_code;
     });
-    const randomIndex = Math.floor(Math.random() * prefectureCity.length);
+
+    let randomIndex: number;
+    while (true) {
+      randomIndex = Math.floor(Math.random() * prefectureCity.length);
+      if (
+        !pickedCities.find(
+          (city) => city.city_code === prefectureCity[randomIndex].city_code
+        )
+      ) {
+        break;
+      }
+    }
+
     setPickedCity(prefectureCity[randomIndex]);
     setPickedCities([...pickedCities, prefectureCity[randomIndex]]);
   };
@@ -77,12 +77,23 @@ function App() {
               icon={scheme === "light" ? "moon" : "sun"}
               onClick={() => setScheme(scheme === "light" ? "dark" : "light")}
             />
-            <IconButtonLink
+            <ButtonLink
+              text="GitHub"
               accessibilityLabel="GitHub"
+              color="transparent"
               href="https://github.com/YutaGoto/japanCityGacha"
               target="blank"
               rel="nofollow"
-              icon="visit"
+              iconStart="visit"
+            />
+            <ButtonLink
+              text="市町村一覧"
+              accessibilityLabel="市町村一覧"
+              color="transparent"
+              href="https://github.com/nojimage/local-gov-code-jp/blob/ba7a68463e2c68996e6a993640c21296a9cb0785/cities.json"
+              target="blank"
+              rel="nofollow"
+              iconStart="visit"
             />
           </Box>
           <Flex justifyContent="center">
@@ -103,7 +114,11 @@ function App() {
                     />
                   ))}
                 </SelectList>
-                <Button text="市町村ルーレット" onClick={pickCity} />
+                <Button
+                  text="市町村ルーレット"
+                  onClick={pickCity}
+                  disabled={pickedCities.length === 15}
+                />
               </Flex>
               <Box marginTop={4}>
                 {pickedCity?.city_name && (
