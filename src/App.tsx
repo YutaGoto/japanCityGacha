@@ -1,81 +1,144 @@
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import {
+  Box,
+  Button,
+  ButtonLink,
+  ColorSchemeProvider,
+  ComboBox,
+  Flex,
+  Heading,
+  IconButton,
+  Text,
+  TextField,
+} from "gestalt";
+
 import { cities } from "./cities";
 import { prefectures } from "./prefectures";
-import "./App.css";
 import { useState } from "react";
+import { ColorScheme } from "gestalt/dist/contexts/ColorSchemeProvider";
+import type { City, Prefecture } from "./types";
 
 function App() {
-  const [pickedCity, setPickedCity] = useState({
-    city_name: "",
-    city_code: "",
-  });
-  const [pickedPrefecture, setPickedPrefecture] = useState({
-    pref_name: "",
-    pref_code: "",
-  });
+  const [scheme, setScheme] = useState<ColorScheme>("userPreference");
 
-  const pickPrefecture = () => {
-    setPickedCity({ city_name: "", city_code: "" });
-    const randomIndex = Math.floor(Math.random() * prefectures.length);
-    setPickedPrefecture(prefectures[randomIndex]);
+  const [pickedCity, setPickedCity] = useState<City | undefined>(undefined);
+  const [pickedCities, setPickedCities] = useState<City[]>([]);
+
+  const [pickedPrefecture, setPickedPrefecture] = useState<Prefecture>(
+    prefectures[0]
+  );
+
+  const optionPrefectures = prefectures.map((prefecture) => ({
+    value: prefecture.pref_code,
+    label: prefecture.pref_name,
+  }));
+
+  const selectPrefecture = (prefectureCode: string) => {
+    const prefecture = prefectures.find(
+      (prefecture) => prefecture.pref_code === prefectureCode
+    );
+    if (!prefecture) {
+      return;
+    }
+    setPickedCity(undefined);
+    setPickedPrefecture(prefecture);
   };
 
   const pickCity = () => {
     const prefectureCity = cities.filter((city) => {
       return city.pref_code === pickedPrefecture.pref_code;
     });
-    const randomIndex = Math.floor(Math.random() * prefectureCity.length);
+
+    let randomIndex: number;
+    while (true) {
+      randomIndex = Math.floor(Math.random() * prefectureCity.length);
+      if (
+        !pickedCities.find(
+          (city) => city.city_code === prefectureCity[randomIndex].city_code
+        )
+      ) {
+        break;
+      }
+    }
+
     setPickedCity(prefectureCity[randomIndex]);
+    setPickedCities([...pickedCities, prefectureCity[randomIndex]]);
   };
 
   return (
-    <>
-      <div className="github">
-        <a
-          href="https://github.com/YutaGoto/japanCityGacha"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-      </div>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <div>
-        <h1>市区町村ルーレット</h1>
-        <div className="buttons">
-          <button className="button" onClick={pickPrefecture}>
-            都道府県
-          </button>
-          <button className="button" onClick={pickCity}>
-            市町村
-          </button>
-        </div>
-        {pickedPrefecture.pref_name && (
-          <div>
-            <h3>
-              🎉 {pickedPrefecture.pref_name}
-              {pickedCity.city_name && pickedCity.city_name} 🎉
-            </h3>
-          </div>
-        )}
-      </div>
-      <div>
-        <h2>候補: {cities.length}</h2>
-        <ul>
-          {cities.map((city) => (
-            <li key={city.code}>{city.name}</li>
-          ))}
-        </ul>
-      </div>
-    </>
+    <Flex alignContent="center" justifyContent="center">
+      <ColorSchemeProvider colorScheme={scheme}>
+        <Box color="default" minHeight="100vh" minWidth="100vw" paddingX={4}>
+          <Box
+            role="navigation"
+            direction="row"
+            display="flex"
+            justifyContent="end"
+            paddingX={4}
+            paddingY={3}
+          >
+            <IconButton
+              accessibilityLabel="Toggle color scheme"
+              icon={scheme === "light" ? "moon" : "sun"}
+              onClick={() => setScheme(scheme === "light" ? "dark" : "light")}
+            />
+            <ButtonLink
+              text="GitHub"
+              accessibilityLabel="GitHub"
+              color="transparent"
+              href="https://github.com/YutaGoto/japanCityGacha"
+              target="blank"
+              rel="nofollow"
+              iconStart="visit"
+            />
+            <ButtonLink
+              text="市町村一覧"
+              accessibilityLabel="市町村一覧"
+              color="transparent"
+              href="https://github.com/nojimage/local-gov-code-jp/blob/ba7a68463e2c68996e6a993640c21296a9cb0785/cities.json"
+              target="blank"
+              rel="nofollow"
+              iconStart="visit"
+            />
+          </Box>
+          <Flex justifyContent="center">
+            <Box>
+              <Heading accessibilityLevel={1}>市区町村ルーレット</Heading>
+              <Flex alignItems="end" gap={4}>
+                <ComboBox
+                  label="都道府県"
+                  id="prefecture"
+                  placeholder="都道府県を選択"
+                  onSelect={(e) => selectPrefecture(e.item.value)}
+                  options={optionPrefectures}
+                />
+                <Button
+                  text="市町村ルーレット"
+                  onClick={pickCity}
+                  disabled={pickedCities.length === 15}
+                />
+              </Flex>
+              <Box marginTop={4}>
+                {pickedCity?.city_name && (
+                  <TextField
+                    id="city"
+                    name="city"
+                    value={`${pickedPrefecture.pref_name}${pickedCity.city_name}`}
+                    onChange={() => {}}
+                  />
+                )}
+              </Box>
+              <Box>
+                <Heading accessibilityLevel={2}>選ばれた市町村</Heading>
+
+                {pickedCities.map((city) => (
+                  <Text key={city.city_code}>{city.name}</Text>
+                ))}
+              </Box>
+            </Box>
+          </Flex>
+        </Box>
+      </ColorSchemeProvider>
+    </Flex>
   );
 }
 
