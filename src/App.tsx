@@ -44,8 +44,12 @@ function App() {
   };
 
   const pickCity = () => {
+    if (!pickedPrefecture) {
+      return;
+    }
+
     const prefectureCity = cities.filter((city) => {
-      return city.pref_code === pickedPrefecture.pref_code;
+      return city.pref_code === pickedPrefecture?.pref_code;
     });
 
     let randomIndex: number;
