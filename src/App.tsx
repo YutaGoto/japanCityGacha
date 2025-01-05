@@ -23,9 +23,9 @@ function App() {
   const [pickedCity, setPickedCity] = useState<City | undefined>(undefined);
   const [pickedCities, setPickedCities] = useState<City[]>([]);
 
-  const [pickedPrefecture, setPickedPrefecture] = useState<Prefecture>(
-    prefectures[0]
-  );
+  const [pickedPrefecture, setPickedPrefecture] = useState<
+    Prefecture | undefined
+  >(prefectures[0]);
 
   const optionPrefectures = prefectures.map((prefecture) => ({
     value: prefecture.pref_code,
@@ -108,24 +108,28 @@ function App() {
                   label="都道府県"
                   id="prefecture"
                   placeholder="都道府県を選択"
+                  inputValue={pickedPrefecture?.pref_name || ""}
                   onSelect={(e) => selectPrefecture(e.item.value)}
+                  onClear={() => setPickedPrefecture(undefined)}
                   options={optionPrefectures}
                 />
                 <Button
                   text="市町村ルーレット"
                   onClick={pickCity}
-                  disabled={pickedCities.length === 15}
+                  disabled={pickedCities.length === 15 || !pickedPrefecture}
                 />
               </Flex>
               <Box marginTop={4}>
-                {pickedCity?.city_name && (
-                  <TextField
-                    id="city"
-                    name="city"
-                    value={`${pickedPrefecture.pref_name}${pickedCity.city_name}`}
-                    onChange={() => {}}
-                  />
-                )}
+                <TextField
+                  id="city"
+                  name="city"
+                  value={
+                    pickedPrefecture?.pref_name && pickedCity?.city_name
+                      ? `${pickedPrefecture.pref_name}${pickedCity.city_name}`
+                      : ""
+                  }
+                  onChange={() => {}}
+                />
               </Box>
               <Box>
                 <Heading accessibilityLevel={2}>選ばれた市町村</Heading>
