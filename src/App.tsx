@@ -13,7 +13,7 @@ import {
 
 import { cities } from "./cities";
 import { prefectures } from "./prefectures";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ColorScheme } from "gestalt/dist/contexts/ColorSchemeProvider";
 import type { City, Prefecture } from "./types";
 
@@ -22,6 +22,7 @@ function App() {
 
   const [pickedCity, setPickedCity] = useState<City | undefined>(undefined);
   const [pickedCities, setPickedCities] = useState<City[]>([]);
+  const [start, setStart] = useState<boolean>(false);
 
   const [pickedPrefecture, setPickedPrefecture] = useState<
     Prefecture | undefined
@@ -43,30 +44,41 @@ function App() {
     setPickedPrefecture(prefecture);
   };
 
-  const pickCity = () => {
-    if (!pickedPrefecture) {
+  useEffect(() => {
+    if (!start || !pickedPrefecture) {
       return;
     }
-
     const prefectureCity = cities.filter((city) => {
       return city.pref_code === pickedPrefecture?.pref_code;
     });
 
-    let randomIndex: number;
-    while (true) {
-      randomIndex = Math.floor(Math.random() * prefectureCity.length);
-      if (
-        !pickedCities.find(
-          (city) => city.city_code === prefectureCity[randomIndex].city_code
-        )
-      ) {
-        break;
-      }
-    }
+    const interval = setInterval(() => {
+      while (true) {
+        const currentCity =
+          prefectureCity[Math.floor(Math.random() * prefectureCity.length)];
 
-    setPickedCity(prefectureCity[randomIndex]);
-    setPickedCities([...pickedCities, prefectureCity[randomIndex]]);
-  };
+        if (
+          !pickedCities.find((city) => city.city_code === currentCity.city_code)
+        ) {
+          setPickedCity(currentCity);
+          break;
+        }
+      }
+    }, 10);
+
+    return () => clearInterval(interval);
+  }, [start, pickedPrefecture, pickedCities, pickedCity]);
+
+  useEffect(() => {
+    if (pickedCities.length === 15) {
+      setStart(false);
+    }
+  }, [pickedCities]);
+
+  useEffect(() => {
+    if (pickedCity && !start && !pickedCities.includes(pickedCity))
+      setPickedCities([...pickedCities, pickedCity!]);
+  }, [pickedCities, pickedCity, start]);
 
   return (
     <Flex alignContent="center" justifyContent="center">
@@ -106,7 +118,7 @@ function App() {
           </Box>
           <Flex justifyContent="center">
             <Box>
-              <Heading accessibilityLevel={1}>市区町村ルーレット</Heading>
+              <Heading accessibilityLevel={1}>市区町村ガチャ</Heading>
               <Flex alignItems="end" gap={4}>
                 <ComboBox
                   label="都道府県"
@@ -118,8 +130,8 @@ function App() {
                   options={optionPrefectures}
                 />
                 <Button
-                  text="市町村ルーレット"
-                  onClick={pickCity}
+                  text={start ? "ストップ" : "スタート"}
+                  onClick={() => setStart(!start)}
                   disabled={pickedCities.length === 15 || !pickedPrefecture}
                 />
               </Flex>
@@ -141,6 +153,17 @@ function App() {
                 {pickedCities.map((city) => (
                   <Text key={city.city_code}>{city.name}</Text>
                 ))}
+              </Box>
+
+              <Box marginTop={2}>
+                <Button
+                  text="リセット"
+                  color="red"
+                  onClick={() => {
+                    setPickedCity(undefined);
+                    setPickedCities([]);
+                  }}
+                />
               </Box>
             </Box>
           </Flex>
