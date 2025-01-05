@@ -24,9 +24,9 @@ function App() {
   const [pickedCities, setPickedCities] = useState<City[]>([]);
   const [start, setStart] = useState<boolean>(false);
 
-  const [pickedPrefecture, setPickedPrefecture] = useState<Prefecture>(
-    prefectures[0]
-  );
+  const [pickedPrefecture, setPickedPrefecture] = useState<
+    Prefecture | undefined
+  >(prefectures[0]);
 
   const optionPrefectures = prefectures.map((prefecture) => ({
     value: prefecture.pref_code,
@@ -45,11 +45,11 @@ function App() {
   };
 
   useEffect(() => {
-    if (!start) {
+    if (!start || !pickedPrefecture) {
       return;
     }
     const prefectureCity = cities.filter((city) => {
-      return city.pref_code === pickedPrefecture.pref_code;
+      return city.pref_code === pickedPrefecture?.pref_code;
     });
 
     const interval = setInterval(() => {
@@ -124,13 +124,15 @@ function App() {
                   label="都道府県"
                   id="prefecture"
                   placeholder="都道府県を選択"
+                  inputValue={pickedPrefecture?.pref_name || ""}
                   onSelect={(e) => selectPrefecture(e.item.value)}
+                  onClear={() => setPickedPrefecture(undefined)}
                   options={optionPrefectures}
                 />
                 <Button
                   text={start ? "ストップ" : "スタート"}
                   onClick={() => setStart(!start)}
-                  disabled={pickedCities.length === 15}
+                  disabled={pickedCities.length === 15 || !pickedPrefecture}
                 />
               </Flex>
               <Box marginTop={4}>
@@ -138,7 +140,7 @@ function App() {
                   id="city"
                   name="city"
                   value={
-                    pickedCity
+                    pickedPrefecture?.pref_name && pickedCity?.city_name
                       ? `${pickedPrefecture.pref_name}${pickedCity.city_name}`
                       : ""
                   }
