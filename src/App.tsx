@@ -164,7 +164,7 @@ function App() {
               <Flex alignItems="end" gap={4}>
                 <Button
                   text="都道府県ランダム選択"
-                  disabled={!isRandomPrefecture}
+                  disabled={!isRandomPrefecture || start}
                   onClick={() => {
                     setPickedCity(undefined);
                     setPrefectureStart(!prefectureStart);
@@ -174,7 +174,7 @@ function App() {
                   text={start ? "市区町村ガチャストップ" : "市区町村ガチャスタート"}
                   onClick={() => setStart(!start)}
                   color={"blue"}
-                  disabled={pickedCities.length === 15 || !pickedPrefecture}
+                  disabled={pickedCities.length === 15 || !pickedPrefecture || prefectureStart}
                 />
                 </Flex>
               </Flex>
