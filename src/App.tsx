@@ -7,6 +7,8 @@ import {
   Flex,
   Heading,
   IconButton,
+  Label,
+  Switch,
   Text,
   TextField,
 } from "gestalt";
@@ -19,6 +21,9 @@ import type { City, Prefecture } from "./types";
 
 function App() {
   const [scheme, setScheme] = useState<ColorScheme>("userPreference");
+
+  const [isRandomPrefecture, setIsRandomPrefecture] = useState<boolean>(false);
+  const [prefectureStart, setPrefectureStart] = useState<boolean>(false);
 
   const [pickedCity, setPickedCity] = useState<City | undefined>(undefined);
   const [pickedCities, setPickedCities] = useState<City[]>([]);
@@ -43,6 +48,19 @@ function App() {
     setPickedCity(undefined);
     setPickedPrefecture(prefecture);
   };
+
+  useEffect(() => {
+    if (!prefectureStart || !isRandomPrefecture) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      const randomIndex = Math.floor(Math.random() * prefectures.length);
+      setPickedPrefecture(prefectures[randomIndex]);
+    }, 10);
+
+    return () => clearInterval(interval);
+  }, [prefectureStart, isRandomPrefecture]);
 
   useEffect(() => {
     if (!start || !pickedPrefecture) {
@@ -119,7 +137,19 @@ function App() {
           <Flex justifyContent="center">
             <Box>
               <Heading accessibilityLevel={1}>市区町村ガチャ</Heading>
-              <Flex alignItems="end" gap={4}>
+              <Flex direction="column" gap={6}>
+              <Flex direction="row" alignItems="end" gap={4}>
+                <Flex gap={2}>
+                  <Label htmlFor="isRandomPrefecture">
+                    <Text>ランダムで都道府県を選択</Text>
+                  </Label>
+                  <Switch
+                    id="isRandomPrefecture"
+                    name="isRandomPrefecture"
+                    switched={isRandomPrefecture}
+                    onChange={() => setIsRandomPrefecture(!isRandomPrefecture)}
+                  />
+                </Flex>
                 <ComboBox
                   label="都道府県"
                   id="prefecture"
@@ -127,18 +157,32 @@ function App() {
                   inputValue={pickedPrefecture?.pref_name || ""}
                   onSelect={(e) => selectPrefecture(e.item.value)}
                   onClear={() => setPickedPrefecture(undefined)}
+                  disabled={isRandomPrefecture}
                   options={optionPrefectures}
                 />
+              </Flex>
+              <Flex alignItems="end" gap={4}>
                 <Button
-                  text={start ? "ストップ" : "スタート"}
-                  onClick={() => setStart(!start)}
-                  disabled={pickedCities.length === 15 || !pickedPrefecture}
+                  text="都道府県ランダム選択"
+                  disabled={!isRandomPrefecture || start}
+                  onClick={() => {
+                    setPickedCity(undefined);
+                    setPrefectureStart(!prefectureStart);
+                  }}
                 />
+                <Button
+                  text={start ? "市区町村ガチャストップ" : "市区町村ガチャスタート"}
+                  onClick={() => setStart(!start)}
+                  color={"blue"}
+                  disabled={pickedCities.length === 15 || !pickedPrefecture || prefectureStart}
+                />
+                </Flex>
               </Flex>
               <Box marginTop={4}>
                 <TextField
                   id="city"
                   name="city"
+                  label="市区町村"
                   value={
                     pickedPrefecture?.pref_name && pickedCity?.city_name
                       ? `${pickedPrefecture.pref_name}${pickedCity.city_name}`
