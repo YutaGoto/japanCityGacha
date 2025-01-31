@@ -12,15 +12,26 @@ import {
   Text,
   TextField,
 } from "gestalt";
+import { useSound } from "use-sound";
 
 import { cities } from "./cities";
 import { prefectures } from "./prefectures";
 import { useEffect, useState } from "react";
 import { ColorScheme } from "gestalt/dist/contexts/ColorSchemeProvider";
 import type { City, Prefecture } from "./types";
+import drumLoop from "../public/noise-drum-loop.mp3";
+import crashCymbal from "../public/crash-cymbal.mp3";
 
 function App() {
   const [scheme, setScheme] = useState<ColorScheme>("userPreference");
+
+  const [playDrum, { stop: stopDrum }] = useSound(drumLoop, {
+    volume: 0.5,
+  });
+  const [playCrashCymbal, { stop: stopCrashCymbal }] = useSound(crashCymbal, {
+    volume: 0.5,
+  });
+  const [isPlaySound, setIsPlaySound] = useState<boolean>(false);
 
   const [isRandomPrefecture, setIsRandomPrefecture] = useState<boolean>(false);
   const [prefectureStart, setPrefectureStart] = useState<boolean>(false);
@@ -47,6 +58,18 @@ function App() {
     }
     setPickedCity(undefined);
     setPickedPrefecture(prefecture);
+  };
+
+  const soundEffect = () => {
+    if(isPlaySound) {
+      if (!start && !prefectureStart) {
+        playDrum();
+        stopCrashCymbal();
+      } else {
+        stopDrum();
+        playCrashCymbal();
+      }
+    }
   };
 
   useEffect(() => {
@@ -168,13 +191,24 @@ function App() {
                   onClick={() => {
                     setPickedCity(undefined);
                     setPrefectureStart(!prefectureStart);
+                    soundEffect();
                   }}
                 />
                 <Button
                   text={start ? "市区町村ガチャストップ" : "市区町村ガチャスタート"}
-                  onClick={() => setStart(!start)}
+                  onClick={() => {
+                    setStart(!start);
+                    soundEffect();
+                  }}
                   color={"blue"}
                   disabled={pickedCities.length === 15 || !pickedPrefecture || prefectureStart}
+                />
+                <IconButton
+                  accessibilityLabel="Toggle sound effect"
+                  size="md"
+                  bgColor={isPlaySound ? "gray" : "transparent"}
+                  icon={isPlaySound ? "music-on" : "music-off"}
+                  onClick={() => setIsPlaySound(!isPlaySound)}
                 />
                 </Flex>
               </Flex>
