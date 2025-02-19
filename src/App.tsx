@@ -19,8 +19,8 @@ import { prefectures } from "./prefectures";
 import { useEffect, useState } from "react";
 import { ColorScheme } from "gestalt/dist/contexts/ColorSchemeProvider";
 import type { City, Prefecture } from "./types";
-import drumLoop from "../public/noise-drum-loop.mp3";
-import crashCymbal from "../public/crash-cymbal.mp3";
+import drumLoop from "/noise-drum-loop.mp3?url";
+import crashCymbal from "/crash-cymbal.mp3?url";
 
 function App() {
   const [scheme, setScheme] = useState<ColorScheme>("userPreference");
@@ -61,7 +61,7 @@ function App() {
   };
 
   const soundEffect = () => {
-    if(isPlaySound) {
+    if (isPlaySound) {
       if (!start && !prefectureStart) {
         playDrum();
         stopCrashCymbal();
@@ -161,55 +161,55 @@ function App() {
             <Box>
               <Heading accessibilityLevel={1}>市区町村ガチャ</Heading>
               <Flex direction="column" gap={6}>
-              <Flex direction="row" alignItems="end" gap={4}>
-                <Flex gap={2}>
-                  <Label htmlFor="isRandomPrefecture">
-                    <Text>ランダムで都道府県を選択</Text>
-                  </Label>
-                  <Switch
-                    id="isRandomPrefecture"
-                    name="isRandomPrefecture"
-                    switched={isRandomPrefecture}
-                    onChange={() => setIsRandomPrefecture(!isRandomPrefecture)}
+                <Flex direction="row" alignItems="end" gap={4}>
+                  <Flex gap={2}>
+                    <Label htmlFor="isRandomPrefecture">
+                      <Text>ランダムで都道府県を選択</Text>
+                    </Label>
+                    <Switch
+                      id="isRandomPrefecture"
+                      name="isRandomPrefecture"
+                      switched={isRandomPrefecture}
+                      onChange={() => setIsRandomPrefecture(!isRandomPrefecture)}
+                    />
+                  </Flex>
+                  <ComboBox
+                    label="都道府県"
+                    id="prefecture"
+                    placeholder="都道府県を選択"
+                    inputValue={pickedPrefecture?.pref_name || ""}
+                    onSelect={(e) => selectPrefecture(e.item.value)}
+                    onClear={() => setPickedPrefecture(undefined)}
+                    disabled={isRandomPrefecture}
+                    options={optionPrefectures}
                   />
                 </Flex>
-                <ComboBox
-                  label="都道府県"
-                  id="prefecture"
-                  placeholder="都道府県を選択"
-                  inputValue={pickedPrefecture?.pref_name || ""}
-                  onSelect={(e) => selectPrefecture(e.item.value)}
-                  onClear={() => setPickedPrefecture(undefined)}
-                  disabled={isRandomPrefecture}
-                  options={optionPrefectures}
-                />
-              </Flex>
-              <Flex alignItems="end" gap={4}>
-                <Button
-                  text="都道府県ランダム選択"
-                  disabled={!isRandomPrefecture || start}
-                  onClick={() => {
-                    setPickedCity(undefined);
-                    setPrefectureStart(!prefectureStart);
-                    soundEffect();
-                  }}
-                />
-                <Button
-                  text={start ? "市区町村ガチャストップ" : "市区町村ガチャスタート"}
-                  onClick={() => {
-                    setStart(!start);
-                    soundEffect();
-                  }}
-                  color={"blue"}
-                  disabled={pickedCities.length === 15 || !pickedPrefecture || prefectureStart}
-                />
-                <IconButton
-                  accessibilityLabel="Toggle sound effect"
-                  size="md"
-                  bgColor={isPlaySound ? "gray" : "transparent"}
-                  icon={isPlaySound ? "music-on" : "music-off"}
-                  onClick={() => setIsPlaySound(!isPlaySound)}
-                />
+                <Flex alignItems="end" gap={4}>
+                  <Button
+                    text="都道府県ランダム選択"
+                    disabled={!isRandomPrefecture || start}
+                    onClick={() => {
+                      setPickedCity(undefined);
+                      setPrefectureStart(!prefectureStart);
+                      soundEffect();
+                    }}
+                  />
+                  <Button
+                    text={start ? "市区町村ガチャストップ" : "市区町村ガチャスタート"}
+                    onClick={() => {
+                      setStart(!start);
+                      soundEffect();
+                    }}
+                    color={"blue"}
+                    disabled={pickedCities.length === 15 || !pickedPrefecture || prefectureStart}
+                  />
+                  <IconButton
+                    accessibilityLabel="Toggle sound effect"
+                    size="md"
+                    bgColor={isPlaySound ? "gray" : "transparent"}
+                    icon={isPlaySound ? "music-on" : "music-off"}
+                    onClick={() => setIsPlaySound(!isPlaySound)}
+                  />
                 </Flex>
               </Flex>
               <Box marginTop={4}>
@@ -222,7 +222,7 @@ function App() {
                       ? `${pickedPrefecture.pref_name}${pickedCity.city_name}`
                       : ""
                   }
-                  onChange={() => {}}
+                  onChange={() => { }}
                 />
               </Box>
               <Box>
