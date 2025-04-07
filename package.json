@@ -17,7 +17,7 @@
     "use-sound": "^5.0.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.23.0",
+    "@eslint/js": "^9.24.0",
     "@playwright/test": "^1.51.1",
     "@types/node": "^22.13.13",
     "@types/react": "^18.3.18",
