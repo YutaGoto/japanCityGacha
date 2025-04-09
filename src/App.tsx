@@ -159,7 +159,7 @@ function App() {
           </Box>
           <Flex justifyContent="center">
             <Box>
-              <Heading accessibilityLevel={1}>市区町村ガチャ</Heading>
+              <Heading accessibilityLevel={1}>市町村ガチャ</Heading>
               <Flex direction="column" gap={6}>
                 <Flex direction="row" alignItems="end" gap={4}>
                   <Flex gap={2}>
@@ -195,7 +195,7 @@ function App() {
                     }}
                   />
                   <Button
-                    text={start ? "市区町村ガチャストップ" : "市区町村ガチャスタート"}
+                    text={start ? "市町村ガチャストップ" : "市町村ガチャスタート"}
                     onClick={() => {
                       setStart(!start);
                       soundEffect();
@@ -216,7 +216,7 @@ function App() {
                 <TextField
                   id="city"
                   name="city"
-                  label="市区町村"
+                  label="市町村"
                   value={
                     pickedPrefecture?.pref_name && pickedCity?.city_name
                       ? `${pickedPrefecture.pref_name}${pickedCity.city_name}`
