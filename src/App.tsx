@@ -35,7 +35,7 @@ function App() {
 
   const [isRandomPrefecture, setIsRandomPrefecture] = useState<boolean>(false);
   const [prefectureStart, setPrefectureStart] = useState<boolean>(false);
-
+  const [showMenu, setShowMenu] = useState<boolean>(false);
   const [pickedCity, setPickedCity] = useState<City | undefined>(undefined);
   const [pickedCities, setPickedCities] = useState<City[]>([]);
   const [start, setStart] = useState<boolean>(false);
@@ -156,7 +156,47 @@ function App() {
               rel="nofollow"
               iconStart="visit"
             />
+            <Button
+              text="音源"
+              accessibilityLabel="音源"
+              iconStart="menu"
+              onClick={() => {
+                setShowMenu(!showMenu);
+              }}
+            />
           </Box>
+          {showMenu && (
+            <Box position="absolute"
+              top
+              right
+              marginTop={16}
+              marginEnd={10}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Flex alignItems="end" direction="column" gap={2}>
+                <ButtonLink
+                  text="ドラム"
+                  accessibilityLabel="ドラムループ"
+                  color="transparent"
+                  href="https://pixabay.com/ja/sound-effects/noise-drum-loop-134bpm-245852/"
+                  target="blank"
+                  rel="nofollow"
+                  iconStart="audio-bars"
+                />
+                <ButtonLink
+                  text="シンバル"
+                  accessibilityLabel="クラッシュシンバル"
+                  color="transparent"
+                  href="https://pixabay.com/ja/sound-effects/tr707-crash-cymbal-241376/"
+                  target="blank"
+                  rel="nofollow"
+                  iconStart="audio-bars"
+                />
+              </Flex>
+            </Box>
+          )}
           <Flex justifyContent="center">
             <Box>
               <Heading accessibilityLevel={1}>市町村ガチャ</Heading>
