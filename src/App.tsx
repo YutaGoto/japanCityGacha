@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  ButtonLink,
   ColorSchemeProvider,
   ComboBox,
   Flex,
@@ -21,6 +20,7 @@ import { ColorScheme } from "gestalt/dist/contexts/ColorSchemeProvider";
 import type { City, Prefecture } from "./types";
 import drumLoop from "/noise-drum-loop.mp3?url";
 import crashCymbal from "/crash-cymbal.mp3?url";
+import { Navigation, PickedCities } from "./components";
 
 function App() {
   const [scheme, setScheme] = useState<ColorScheme>("userPreference");
@@ -35,7 +35,6 @@ function App() {
 
   const [isRandomPrefecture, setIsRandomPrefecture] = useState<boolean>(false);
   const [prefectureStart, setPrefectureStart] = useState<boolean>(false);
-  const [showMenu, setShowMenu] = useState<boolean>(false);
   const [pickedCity, setPickedCity] = useState<City | undefined>(undefined);
   const [pickedCities, setPickedCities] = useState<City[]>([]);
   const [start, setStart] = useState<boolean>(false);
@@ -125,78 +124,10 @@ function App() {
     <Flex alignContent="center" justifyContent="center">
       <ColorSchemeProvider colorScheme={scheme}>
         <Box color="default" minHeight="100vh" minWidth="100vw" paddingX={4}>
-          <Box
-            role="navigation"
-            direction="row"
-            display="flex"
-            justifyContent="end"
-            paddingX={4}
-            paddingY={3}
-          >
-            <IconButton
-              accessibilityLabel="Toggle color scheme"
-              icon={scheme === "light" ? "moon" : "sun"}
-              onClick={() => setScheme(scheme === "light" ? "dark" : "light")}
-            />
-            <ButtonLink
-              text="GitHub"
-              accessibilityLabel="GitHub"
-              color="transparent"
-              href="https://github.com/YutaGoto/japanCityGacha"
-              target="blank"
-              rel="nofollow"
-              iconStart="visit"
-            />
-            <ButtonLink
-              text="市町村一覧"
-              accessibilityLabel="市町村一覧"
-              color="transparent"
-              href="https://github.com/nojimage/local-gov-code-jp/blob/ba7a68463e2c68996e6a993640c21296a9cb0785/cities.json"
-              target="blank"
-              rel="nofollow"
-              iconStart="visit"
-            />
-            <Button
-              text="音源"
-              accessibilityLabel="音源"
-              iconStart="menu"
-              onClick={() => {
-                setShowMenu(!showMenu);
-              }}
-            />
-          </Box>
-          {showMenu && (
-            <Box position="absolute"
-              top
-              right
-              marginTop={16}
-              marginEnd={10}
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Flex alignItems="end" direction="column" gap={2}>
-                <ButtonLink
-                  text="ドラム"
-                  accessibilityLabel="ドラムループ"
-                  color="transparent"
-                  href="https://pixabay.com/ja/sound-effects/noise-drum-loop-134bpm-245852/"
-                  target="blank"
-                  rel="nofollow"
-                  iconStart="audio-bars"
-                />
-                <ButtonLink
-                  text="シンバル"
-                  accessibilityLabel="クラッシュシンバル"
-                  color="transparent"
-                  href="https://pixabay.com/ja/sound-effects/tr707-crash-cymbal-241376/"
-                  target="blank"
-                  rel="nofollow"
-                  iconStart="audio-bars"
-                />
-              </Flex>
-            </Box>
-          )}
+          <Navigation
+            scheme={scheme}
+            setScheme={setScheme}
+          />
           <Flex justifyContent="center">
             <Box>
               <Heading accessibilityLevel={1}>市町村ガチャ</Heading>
@@ -265,24 +196,11 @@ function App() {
                   onChange={() => { }}
                 />
               </Box>
-              <Box>
-                <Heading accessibilityLevel={2}>選ばれた市町村</Heading>
-
-                {pickedCities.map((city) => (
-                  <Text key={city.city_code}>{city.name}</Text>
-                ))}
-              </Box>
-
-              <Box marginTop={2}>
-                <Button
-                  text="リセット"
-                  color="red"
-                  onClick={() => {
-                    setPickedCity(undefined);
-                    setPickedCities([]);
-                  }}
-                />
-              </Box>
+              <PickedCities
+                pickedCities={pickedCities}
+                setPickedCity={setPickedCity}
+                setPickedCities={setPickedCities}
+              />
             </Box>
           </Flex>
         </Box>
