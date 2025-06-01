@@ -3,9 +3,16 @@ import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
+import { builtinCommands } from 'eslint-plugin-command/commands'
+import command from 'eslint-plugin-command/config'
 
 export default tseslint.config(
   { ignores: ['dist'] },
+  command({
+    commands: [
+      ...builtinCommands,
+    ]
+  }),
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
