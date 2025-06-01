@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "tsc": "tsc -p . --noEmit --extendedDiagnostics",
+    "tsgo": "tsgo -p . --noEmit --extendedDiagnostics",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -22,6 +24,7 @@
     "@types/node": "^22.15.3",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
+    "@typescript/native-preview": "7.0.0-dev.20250601.1",
     "@vitejs/plugin-react": "^4.4.1",
     "eslint": "^9.27.0",
     "eslint-plugin-react-hooks": "^5.2.0",
