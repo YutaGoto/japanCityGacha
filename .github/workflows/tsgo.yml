@@ -10,7 +10,7 @@ on:
 
 jobs:
   tsgo:
-    name: Lint check
+    name: run tsgo
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
