@@ -20,3 +20,5 @@ export interface Prefecture {
   pref_name: string;
   pref_kana: string;
 }
+
+export type ColorSchemeType = "light" | "dark" | "userPreference";

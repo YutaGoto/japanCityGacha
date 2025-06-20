@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   ColorSchemeProvider,
+  DesignTokensProvider,
   ComboBox,
   Flex,
   Heading,
@@ -16,14 +17,13 @@ import { useSound } from "use-sound";
 import { cities } from "./cities";
 import { prefectures } from "./prefectures";
 import { useEffect, useState } from "react";
-import { ColorScheme } from "gestalt/dist/contexts/ColorSchemeProvider";
-import type { City, Prefecture } from "./types";
+import type { City, ColorSchemeType, Prefecture } from "./types";
 import drumLoop from "/noise-drum-loop.mp3?url";
 import crashCymbal from "/crash-cymbal.mp3?url";
 import { Navigation, PickedCities } from "./components";
 
 function App() {
-  const [scheme, setScheme] = useState<ColorScheme>("userPreference");
+  const [scheme, setScheme] = useState<ColorSchemeType>("userPreference");
 
   const [playDrum, { stop: stopDrum }] = useSound(drumLoop, {
     volume: 0.5,
@@ -123,6 +123,7 @@ function App() {
   return (
     <Flex alignContent="center" justifyContent="center">
       <ColorSchemeProvider colorScheme={scheme}>
+        <DesignTokensProvider>
         <Box color="default" minHeight="100vh" minWidth="100vw" paddingX={4}>
           <Navigation
             scheme={scheme}
@@ -202,8 +203,9 @@ function App() {
                 setPickedCities={setPickedCities}
               />
             </Box>
-          </Flex>
-        </Box>
+            </Flex>
+          </Box>
+        </DesignTokensProvider>
       </ColorSchemeProvider>
     </Flex>
   );

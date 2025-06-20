@@ -1,10 +1,11 @@
 import { Box, IconButton, ButtonLink, Button, Flex } from "gestalt";
-import { ColorScheme } from "gestalt/dist/contexts/ColorSchemeProvider";
 import { useState } from "react";
 
+import type { ColorSchemeType } from "../types";
+
 interface NavigationProps {
-  scheme: ColorScheme;
-  setScheme: (scheme: ColorScheme) => void;
+  scheme: ColorSchemeType;
+  setScheme: (scheme: ColorSchemeType) => void;
 }
 
 export const Navigation = ({ scheme, setScheme }: NavigationProps) => {
