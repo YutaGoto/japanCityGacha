@@ -21,7 +21,7 @@
   "devDependencies": {
     "@eslint/js": "^9.28.0",
     "@playwright/test": "^1.52.0",
-    "@types/node": "^22.15.30",
+    "@types/node": "^24.0.3",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.6",
     "@typescript/native-preview": "7.0.0-dev.20250619.1",
