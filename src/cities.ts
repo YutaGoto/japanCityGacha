@@ -20891,4 +20891,4 @@ export const cities = [
       "pref_name": "沖縄県",
       "pref_kana": "おきなわけん"
   }
-]
+];
