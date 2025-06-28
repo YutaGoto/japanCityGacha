@@ -422,4 +422,4 @@ export const prefectures = [
     "pref_name": "沖縄県",
     "pref_kana": "おきなわけん"
   }
-]
+];
