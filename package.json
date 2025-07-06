@@ -23,7 +23,7 @@
     "@eslint/js": "^9.30.0",
     "@playwright/test": "^1.53.1",
     "@stylistic/eslint-plugin": "^5.1.0",
-    "@types/node": "^24.0.3",
+    "@types/node": "^24.0.10",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@typescript/native-preview": "7.0.0-dev.20250705.1",
