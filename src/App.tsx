@@ -14,8 +14,7 @@ import {
 } from "gestalt";
 import { useSound } from "use-sound";
 
-import { cities } from "./cities";
-import { prefectures } from "./prefectures";
+import { cities, prefectures } from "./constants";
 import { useEffect, useState } from "react";
 import type { City, ColorSchemeType, Prefecture } from "./types";
 import drumLoop from "/noise-drum-loop.mp3?url";
