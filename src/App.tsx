@@ -91,22 +91,23 @@ function App() {
       return city.pref_code === pickedPrefecture?.pref_code;
     });
 
-    const interval = setInterval(() => {
-      while (true) {
-        const currentCity =
-          prefectureCity[Math.floor(Math.random() * prefectureCity.length)];
+    const availableCities = prefectureCity.filter(
+      (city) => !pickedCities.find((pc) => pc.city_code === city.city_code)
+    );
 
-        if (
-          !pickedCities.find((city) => city.city_code === currentCity.city_code)
-        ) {
-          setPickedCity(currentCity);
-          break;
-        }
-      }
+    if (availableCities.length === 0) {
+      setStart(false);
+      return;
+    }
+
+    const interval = setInterval(() => {
+      const currentCity =
+        availableCities[Math.floor(Math.random() * availableCities.length)];
+      setPickedCity(currentCity);
     }, 10);
 
     return () => clearInterval(interval);
-  }, [start, pickedPrefecture, pickedCities, pickedCity]);
+  }, [start, pickedPrefecture, pickedCities]);
 
   useEffect(() => {
     if (pickedCities.length === 15) {
