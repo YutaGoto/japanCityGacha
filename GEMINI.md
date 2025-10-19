@@ -10,7 +10,7 @@
 - Styling: Gestalt
 - Build Tool: Vite
 - Testing: Playwright
-- Linting: ESLint, Prettier
+- Linting: ESLint
 - Deployment: Vercel
 
 ## セットアップ
