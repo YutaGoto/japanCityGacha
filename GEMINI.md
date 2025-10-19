@@ -7,7 +7,7 @@
 - package manager: pnpm
 - Framework: React
 - Language: TypeScript
-- Styling: Tailwind CSS
+- Styling: Gestalt
 - Build Tool: Vite
 - Testing: Playwright
 - Linting: ESLint, Prettier
