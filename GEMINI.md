@@ -39,6 +39,10 @@ pnpm test
 pnpm lint
 ```
 
+### ビルド
+
+```bash
+pnpm build
 ## ファイル構成
 
 - `src/components`: コンポーネント集
