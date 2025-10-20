@@ -1,5 +1,5 @@
 import { Box, Heading, Button, Text } from "gestalt";
-import { City } from "../types";
+import type { City } from "../types";
 
 interface PickedCitiesProps {
   pickedCities: City[];
@@ -7,7 +7,11 @@ interface PickedCitiesProps {
   setPickedCities: (cities: City[]) => void;
 }
 
-export const PickedCities = ({ pickedCities, setPickedCity, setPickedCities }: PickedCitiesProps) => {
+export const PickedCities = ({
+  pickedCities,
+  setPickedCity,
+  setPickedCities,
+}: PickedCitiesProps) => {
   return (
     <Box>
       <Box>
