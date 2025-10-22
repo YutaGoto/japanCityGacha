@@ -58,8 +58,8 @@ importers:
         specifier: ^0.4.24
         version: 0.4.24(eslint@9.37.0(jiti@2.4.2))
       gestalt:
-        specifier: ^177.0.0
-        version: 177.0.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: ^177.0.3
+        version: 177.0.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       globals:
         specifier: ^16.4.0
         version: 16.4.0
@@ -373,14 +373,14 @@ packages:
     resolution: {integrity: sha512-sB5uyeq+dwCWyPi31B2gQlVlo+j5brPlWx4yZBrEaRo/nhdDE8Xke1gsGgtiBdaBTxuTkceLVuVt/pclrasb0A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@floating-ui/core@1.7.1':
-    resolution: {integrity: sha512-azI0DrjMMfIug/ExbBaeDVJXcY0a7EPvPjb2xAJPa4HeimBX+Z18HK8QQR3jb6356SnDDdxx+hinMLcJEDdOjw==}
+  '@floating-ui/core@1.7.3':
+    resolution: {integrity: sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w==}
 
-  '@floating-ui/dom@1.7.1':
-    resolution: {integrity: sha512-cwsmW/zyw5ltYTUeeYJ60CnQuPqmGwuGVhG9w0PRaRKkAyi38BT5CKrpIbb+jtahSwUl04cWzSx9ZOIxeS6RsQ==}
+  '@floating-ui/dom@1.7.4':
+    resolution: {integrity: sha512-OOchDgh4F2CchOX94cRVqhvy7b3AFb+/rQXyswmzmGakRfkMgoWVjfnLWkRirfLEfuD4ysVW16eXzwt3jHIzKA==}
 
-  '@floating-ui/react-dom@2.1.3':
-    resolution: {integrity: sha512-huMBfiU9UnQ2oBwIhgzyIiSpVgvlDstU8CX0AF+wS+KzmYMs0J2a3GwuFHV1Lz+jlrQGeC1fF+Nv0QoumyV0bA==}
+  '@floating-ui/react-dom@2.1.6':
+    resolution: {integrity: sha512-4JX6rEatQEvlmgU80wZyq9RT96HZJa88q8hp0pBd+LrczeDI4o6uA2M+uvxngVHo4Ihr8uibXxH6+70zhAFrVw==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
@@ -394,8 +394,8 @@ packages:
   '@floating-ui/utils@0.1.6':
     resolution: {integrity: sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==}
 
-  '@floating-ui/utils@0.2.9':
-    resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
+  '@floating-ui/utils@0.2.10':
+    resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -926,13 +926,13 @@ packages:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
 
-  gestalt-design-tokens@177.0.0:
-    resolution: {integrity: sha512-/jw7XGH8uG0j3WFupN2EoGKt3HZf1TwH8yRaBG7pxByq9+6YwkVS2O1JFP1SS9Xacfosrsji5/VNnV0TLBV7xw==}
+  gestalt-design-tokens@177.0.3:
+    resolution: {integrity: sha512-+UAdXtWFJec4s9gTMgA4URq07HSnGb1RmyWGwshioalV60yfPoUGo0SiFs9K+CBT2CDOjPYQ4QaEaw1IO23waw==}
     peerDependencies:
       gestalt: '>0.0.0'
 
-  gestalt@177.0.0:
-    resolution: {integrity: sha512-+pvndK9Fls+4nKBUGvlWYv0nO0e9SUx2Loq/1ftJhongGPe4LI+g0e/udEYzrdpVQudJeZj0kiOXvWajPTXOvA==}
+  gestalt@177.0.3:
+    resolution: {integrity: sha512-7697LTXRsiDSw4FGDvzJSK9q7gJchYko1XbYxCip6ZY3NGicbk9etrjdCXrjhisSFLsrfRSAWvss9Vf6K7eBLw==}
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
@@ -1572,24 +1572,24 @@ snapshots:
       '@eslint/core': 0.16.0
       levn: 0.4.1
 
-  '@floating-ui/core@1.7.1':
+  '@floating-ui/core@1.7.3':
     dependencies:
-      '@floating-ui/utils': 0.2.9
+      '@floating-ui/utils': 0.2.10
 
-  '@floating-ui/dom@1.7.1':
+  '@floating-ui/dom@1.7.4':
     dependencies:
-      '@floating-ui/core': 1.7.1
-      '@floating-ui/utils': 0.2.9
+      '@floating-ui/core': 1.7.3
+      '@floating-ui/utils': 0.2.10
 
-  '@floating-ui/react-dom@2.1.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@floating-ui/react-dom@2.1.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
-      '@floating-ui/dom': 1.7.1
+      '@floating-ui/dom': 1.7.4
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
 
   '@floating-ui/react@0.25.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
-      '@floating-ui/react-dom': 2.1.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      '@floating-ui/react-dom': 2.1.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@floating-ui/utils': 0.1.6
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
@@ -1597,7 +1597,7 @@ snapshots:
 
   '@floating-ui/utils@0.1.6': {}
 
-  '@floating-ui/utils@0.2.9': {}
+  '@floating-ui/utils@0.2.10': {}
 
   '@humanfs/core@0.19.1': {}
 
@@ -2153,15 +2153,15 @@ snapshots:
 
   gensync@1.0.0-beta.2: {}
 
-  gestalt-design-tokens@177.0.0(gestalt@177.0.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)):
+  gestalt-design-tokens@177.0.3(gestalt@177.0.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)):
     dependencies:
-      gestalt: 177.0.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      gestalt: 177.0.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
 
-  gestalt@177.0.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+  gestalt@177.0.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       '@floating-ui/react': 0.25.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       classnames: 2.5.1
-      gestalt-design-tokens: 177.0.0(gestalt@177.0.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
+      gestalt-design-tokens: 177.0.3(gestalt@177.0.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
 
