@@ -14,7 +14,7 @@
     "test:headed": "playwright test --headed"
   },
   "dependencies": {
-    "react": "^19.1.1",
+    "react": "^19.2.0",
     "react-dom": "^19.1.1",
     "use-sound": "^5.0.0"
   },
@@ -24,7 +24,7 @@
     "@playwright/test": "^1.56.1",
     "@stylistic/eslint-plugin": "^5.4.0",
     "@types/node": "^24.8.1",
-    "@types/react": "^19.1.10",
+    "@types/react": "^19.2.2",
     "@types/react-dom": "^19.1.9",
     "@typescript/native-preview": "7.0.0-dev.20251017.1",
     "@vitejs/plugin-react": "^5.0.4",
