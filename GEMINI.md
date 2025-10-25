@@ -43,6 +43,8 @@ pnpm lint
 
 ```bash
 pnpm build
+```
+
 ## ファイル構成
 
 - `src/components`: コンポーネント集
