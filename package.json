@@ -19,7 +19,7 @@
     "use-sound": "^5.0.0"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.4.0",
+    "@eslint/compat": "^1.4.1",
     "@eslint/js": "^9.39.1",
     "@playwright/test": "^1.56.1",
     "@stylistic/eslint-plugin": "^5.5.0",
