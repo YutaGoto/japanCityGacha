@@ -26,7 +26,7 @@
     "@types/node": "^24.10.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
-    "@typescript/native-preview": "7.0.0-dev.20251127.1",
+    "@typescript/native-preview": "7.0.0-dev.20251208.1",
     "@vitejs/plugin-react": "^5.1.1",
     "eslint": "^9.39.1",
     "eslint-plugin-command": "^3.3.1",
