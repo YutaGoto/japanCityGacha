@@ -31,8 +31,8 @@ importers:
         specifier: ^5.5.0
         version: 5.5.0(eslint@9.39.1(jiti@2.4.2))
       '@types/node':
-        specifier: ^24.10.0
-        version: 24.10.0
+        specifier: ^25.0.3
+        version: 25.0.3
       '@types/react':
         specifier: ^19.2.2
         version: 19.2.2
@@ -44,7 +44,7 @@ importers:
         version: 7.0.0-dev.20251127.1
       '@vitejs/plugin-react':
         specifier: ^5.1.1
-        version: 5.1.1(vite@7.2.2(@types/node@24.10.0)(jiti@2.4.2))
+        version: 5.1.1(vite@7.2.2(@types/node@25.0.3)(jiti@2.4.2))
       eslint:
         specifier: ^9.39.1
         version: 9.39.1(jiti@2.4.2)
@@ -71,7 +71,7 @@ importers:
         version: 8.46.4(eslint@9.39.1(jiti@2.4.2))(typescript@5.9.3)
       vite:
         specifier: ^7.2.2
-        version: 7.2.2(@types/node@24.10.0)(jiti@2.4.2)
+        version: 7.2.2(@types/node@25.0.3)(jiti@2.4.2)
 
 packages:
 
@@ -575,8 +575,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@24.10.0':
-    resolution: {integrity: sha512-qzQZRBqkFsYyaSWXuEHc2WR9c0a0CXwiE5FWUvn7ZM+vdy1uZLfCunD38UzhuB7YN/J11ndbDBcTmOdxJo9Q7A==}
+  '@types/node@25.0.3':
+    resolution: {integrity: sha512-W609buLVRVmeW693xKfzHeIV6nJGGz98uCPfeXI1ELMLXVeKYZ9m15fAMSaUPBHYLGFsVRcMmSCksQOrZV9BYA==}
 
   '@types/react-dom@19.2.2':
     resolution: {integrity: sha512-9KQPoO6mZCi7jcIStSnlOWn2nEF3mNmyr3rIAsGnAbQKYbRLyqmeSc39EVgtxXVia+LMT8j3knZLAZAh+xLmrw==}
@@ -1736,7 +1736,7 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@24.10.0':
+  '@types/node@25.0.3':
     dependencies:
       undici-types: 7.16.0
 
@@ -1874,7 +1874,7 @@ snapshots:
       '@typescript/native-preview-win32-arm64': 7.0.0-dev.20251127.1
       '@typescript/native-preview-win32-x64': 7.0.0-dev.20251127.1
 
-  '@vitejs/plugin-react@5.1.1(vite@7.2.2(@types/node@24.10.0)(jiti@2.4.2))':
+  '@vitejs/plugin-react@5.1.1(vite@7.2.2(@types/node@25.0.3)(jiti@2.4.2))':
     dependencies:
       '@babel/core': 7.28.5
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.5)
@@ -1882,7 +1882,7 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-beta.47
       '@types/babel__core': 7.20.5
       react-refresh: 0.18.0
-      vite: 7.2.2(@types/node@24.10.0)(jiti@2.4.2)
+      vite: 7.2.2(@types/node@25.0.3)(jiti@2.4.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -2425,7 +2425,7 @@ snapshots:
       howler: 2.2.4
       react: 19.2.0
 
-  vite@7.2.2(@types/node@24.10.0)(jiti@2.4.2):
+  vite@7.2.2(@types/node@25.0.3)(jiti@2.4.2):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.3)
@@ -2434,7 +2434,7 @@ snapshots:
       rollup: 4.53.2
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 24.10.0
+      '@types/node': 25.0.3
       fsevents: 2.3.3
       jiti: 2.4.2
 
