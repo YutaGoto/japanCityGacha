@@ -58,8 +58,8 @@ importers:
         specifier: ^0.4.24
         version: 0.4.24(eslint@9.39.1(jiti@2.4.2))
       gestalt:
-        specifier: ^177.0.8
-        version: 177.0.8(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: ^177.0.12
+        version: 177.0.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       globals:
         specifier: ^16.5.0
         version: 16.5.0
@@ -922,13 +922,13 @@ packages:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
 
-  gestalt-design-tokens@177.0.8:
-    resolution: {integrity: sha512-JiSmg5k+vKn/+ZVfMw811bTgqUtfy29/SzMcgvsIKxEXz6ZBlUX4OeF32KVRUhwSSzSf6NcFgivjXZLVyUjjXw==}
+  gestalt-design-tokens@177.0.12:
+    resolution: {integrity: sha512-puE02q7OCsJ2u/dJTX4cHEANDeH1POSEX7hBKF9O+GCQF8eoj4ovkvslzSQbp3pKlX+o65yVSirHR0z69IqG+Q==}
     peerDependencies:
       gestalt: '>0.0.0'
 
-  gestalt@177.0.8:
-    resolution: {integrity: sha512-L9aqpOQMZSzGLdrN2GUScDHXgFx4ryCyghnSY0oZ8XAgeLi3fV2Im9T/eA5jSZr21yB0nXBzR6DLodjjAk/d/w==}
+  gestalt@177.0.12:
+    resolution: {integrity: sha512-nQa+vzmQHo/G4c39gBTu+ywRzaXzlPpBbZhgEAkqf4xjgb8b0BdTi1Akl8HpwGH60exn4dTnovw245hrN+8/uw==}
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
@@ -2146,15 +2146,15 @@ snapshots:
 
   gensync@1.0.0-beta.2: {}
 
-  gestalt-design-tokens@177.0.8(gestalt@177.0.8(react-dom@19.2.0(react@19.2.0))(react@19.2.0)):
+  gestalt-design-tokens@177.0.12(gestalt@177.0.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0)):
     dependencies:
-      gestalt: 177.0.8(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      gestalt: 177.0.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
 
-  gestalt@177.0.8(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  gestalt@177.0.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
       '@floating-ui/react': 0.25.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       classnames: 2.5.1
-      gestalt-design-tokens: 177.0.8(gestalt@177.0.8(react-dom@19.2.0(react@19.2.0))(react@19.2.0))
+      gestalt-design-tokens: 177.0.12(gestalt@177.0.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0))
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
