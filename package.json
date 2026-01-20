@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "playwright test",
-    "test:headed": "playwright test --headed"
+    "test:headed": "playwright test --headed",
+    "knip": "knip"
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -19,11 +20,11 @@
     "use-sound": "^5.0.0"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.4.1",
+    "@eslint/compat": "^2.0.1",
     "@eslint/js": "^9.39.2",
     "@playwright/test": "^1.57.0",
     "@stylistic/eslint-plugin": "^5.7.0",
-    "@types/node": "^25.0.3",
+    "@types/node": "^25.0.9",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@typescript/native-preview": "7.0.0-dev.20260119.1",
@@ -33,7 +34,8 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.26",
     "gestalt": "^177.0.12",
-    "globals": "^16.5.0",
+    "globals": "^17.0.0",
+    "knip": "^5.81.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.2"
