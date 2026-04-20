@@ -61,8 +61,8 @@ importers:
         specifier: ^177.0.12
         version: 177.0.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       globals:
-        specifier: ^17.0.0
-        version: 17.0.0
+        specifier: ^17.5.0
+        version: 17.5.0
       knip:
         specifier: ^6.4.1
         version: 6.4.1(@emnapi/core@1.8.1)(@emnapi/runtime@1.8.1)
@@ -1331,8 +1331,8 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
-  globals@17.0.0:
-    resolution: {integrity: sha512-gv5BeD2EssA793rlFWVPMMCqefTlpusw6/2TbAVMy0FzcG8wKJn4O+NqJ4+XWmmwrayJgw5TzrmWjFgmz1XPqw==}
+  globals@17.5.0:
+    resolution: {integrity: sha512-qoV+HK2yFl/366t2/Cb3+xxPUo5BuMynomoDmiaZBIdbs+0pYbjfZU+twLhGKp4uCZ/+NbtpVepH5bGCxRyy2g==}
     engines: {node: '>=18'}
 
   has-flag@4.0.0:
@@ -2984,7 +2984,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@17.0.0: {}
+  globals@17.5.0: {}
 
   has-flag@4.0.0: {}
 
