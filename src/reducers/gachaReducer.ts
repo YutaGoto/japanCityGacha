@@ -2,7 +2,7 @@ import type { City, Prefecture } from "../types";
 import { prefectures } from "../constants";
 
 // State, Action の定義
-export interface GachaState {
+interface GachaState {
   start: boolean;
   prefectureStart: boolean;
   pickedCity?: City;
@@ -11,7 +11,7 @@ export interface GachaState {
   isRandomPrefecture: boolean;
 }
 
-export type GachaAction =
+type GachaAction =
   | { type: "TOGGLE_RANDOM_PREFECTURE" }
   | { type: "SELECT_PREFECTURE"; payload: Prefecture }
   | { type: "CLEAR_PREFECTURE" }
