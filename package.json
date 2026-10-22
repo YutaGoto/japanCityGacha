@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "packageManager": "pnpm@11.15.1",
   "scripts": {
     "dev": "vite",
     "tsc": "tsc -p . --noEmit --extendedDiagnostics",
@@ -21,17 +22,17 @@
   },
   "devDependencies": {
     "@eslint/compat": "^2.0.2",
-    "@eslint/js": "^9.39.2",
+    "@eslint/js": "^9.39.4",
     "@playwright/test": "^1.58.2",
     "@stylistic/eslint-plugin": "^5.9.0",
-    "@types/node": "^25.0.10",
+    "@types/node": "^26.4.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.2",
     "@typescript/native-preview": "7.0.0-dev.20260303.1",
-    "@vitejs/plugin-react": "^5.1.4",
+    "@vitejs/plugin-react": "^5.2.0",
     "eslint": "^9.39.2",
     "eslint-plugin-command": "^3.5.2",
-    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "gestalt": "^177.0.12",
     "globals": "^17.0.0",
@@ -39,10 +40,5 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.56.1",
     "vite": "^7.3.1"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
   }
 }
