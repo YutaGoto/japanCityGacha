@@ -31,7 +31,7 @@
     "@typescript/native-preview": "7.0.0-dev.20260707.2",
     "@vitejs/plugin-react": "^5.2.0",
     "eslint": "^9.39.2",
-    "eslint-plugin-command": "^3.5.2",
+    "eslint-plugin-command": "^4.0.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "gestalt": "^177.0.12",
